@@ -1,0 +1,173 @@
+{
+  "_from": "nativescript-audio@latest",
+  "_id": "nativescript-audio@6.2.1",
+  "_inBundle": false,
+  "_integrity": "sha512-OXTXDtK4KoPvMX8kxdjptlZ0yD2E8ihLyiQvreHih4GrHEN4SeeVO3QMFMtA/3/xYcvHL8dqSC3ClZR5hyeYTg==",
+  "_location": "/nativescript-audio",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "nativescript-audio@latest",
+    "name": "nativescript-audio",
+    "escapedName": "nativescript-audio",
+    "rawSpec": "latest",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/nativescript-audio/-/nativescript-audio-6.2.1.tgz",
+  "_shasum": "858b5659af6342679c38d7927008a4a206dedc33",
+  "_spec": "nativescript-audio@latest",
+  "_where": "/Users/ayush/ayush/Upwork/apprise-7/Apprise-Audit",
+  "author": {
+    "name": "Brad Martin",
+    "email": "bmartin@nstudio.io",
+    "url": "https://github.com/bradmartin"
+  },
+  "bugs": {
+    "url": "https://github.com/nstudio/nativescript-audio/issues"
+  },
+  "bundleDependencies": false,
+  "contributors": [
+    {
+      "name": "Nathan Walker",
+      "email": "walkerrunpdx@gmail.com",
+      "url": "https://github.com/NathanWalker"
+    },
+    {
+      "name": "Jibon Lawrence Costa",
+      "url": "https://github.com/jibon57"
+    },
+    {
+      "name": "Dylan Ryan",
+      "url": "https://github.com/dylanryan"
+    },
+    {
+      "name": "Alexander Vakrilov",
+      "url": "https://github.com/vakrilov"
+    },
+    {
+      "name": "GT Nunes",
+      "url": "https://github.com/gtnunes1956"
+    },
+    {
+      "name": "Andrea Sotto",
+      "url": "https://github.com/andreasotto"
+    },
+    {
+      "name": "August Heegaard",
+      "url": "https://github.com/agisboye"
+    },
+    {
+      "name": "Akmal Sultonov",
+      "url": "https://github.com/asultonov"
+    },
+    {
+      "name": "Amit Gharat",
+      "url": "https://github.com/codef0rmer"
+    },
+    {
+      "name": "Jen Looper",
+      "url": "https://github.com/jlooper"
+    },
+    {
+      "name": "Stanimira Vlaeva",
+      "url": "https://github.com/sis0k0"
+    },
+    {
+      "name": "Osei Fortune",
+      "url": "https://github.com/triniwiz"
+    },
+    {
+      "name": "RedPandaTronics",
+      "url": "https://github.com/redpandatronicsuk"
+    },
+    {
+      "name": "Chris Flannagan",
+      "url": "https://github.com/ChrisFlannagan"
+    },
+    {
+      "name": "mfrro",
+      "url": "https://github.com/mfrro"
+    },
+    {
+      "name": "Richard Smith",
+      "url": "https://github.com/DickSmith"
+    }
+  ],
+  "dependencies": {
+    "nativescript-permissions": "~1.3.9"
+  },
+  "deprecated": false,
+  "description": "NativeScript plugin to record and play audio.",
+  "devDependencies": {
+    "@nativescript/core": "^7.0.0",
+    "@nativescript/types": "^7.0.0",
+    "@nativescript/webpack": "~3.0.0",
+    "husky": "^4.3.0",
+    "lint-staged": "^10.4.0",
+    "prettier": "^2.1.2",
+    "rimraf": "^3.0.2",
+    "ts-node": "^9.0.0",
+    "ts-patch": "^1.3.0",
+    "tslint": "~6.1.3",
+    "typescript": "~3.9.0"
+  },
+  "homepage": "https://github.com/nstudio/nativescript-audio",
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "pre-push": "npm run tslint"
+    }
+  },
+  "keywords": [
+    "NativeScript",
+    "JavaScript",
+    "TypeScript",
+    "Android",
+    "iOS",
+    "music",
+    "microphone",
+    "recorder",
+    "audio",
+    "nStudio",
+    "bradmartin",
+    "nathanwalker"
+  ],
+  "license": "MIT",
+  "lint-staged": {
+    "**/*.{js, css, ts, json, scss, html, xml, md}": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "main": "audio",
+  "name": "nativescript-audio",
+  "nativescript": {
+    "platforms": {
+      "android": "7.0.0",
+      "ios": "7.0.0"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nstudio/nativescript-audio.git"
+  },
+  "scripts": {
+    "build": "npm i && ts-patch install && tsc",
+    "ci.tslint": "npm i && tslint '**/*.ts' --config '../tslint.json' --exclude '**/node_modules/**' --exclude '**/typings/**'",
+    "clean.demo": "cd ../demo && ns clean",
+    "clean.src": "rimraf **/*.js **/*.js.map node_modules package-lock.json",
+    "demo.android": "npm run build && cd ../demo && tns run android",
+    "demo.ios": "npm run build && cd ../demo && tns run ios",
+    "generate.typings.ios": "cd ../demo && TNS_DEBUG_METADATA_PATH=\"$(pwd)/metadata\" tns build ios && TNS_TYPESCRIPT_DECLARATIONS_PATH=\"$(pwd)/typings\" tns build ios && echo 'Now look for your library typings in demo/typings!'",
+    "tsc": "tsc -skipLibCheck",
+    "tslint": "cd .. && tslint \"**/*.ts\" --config tslint.json --exclude \"**/node_modules/**\" --exclude \"*demo*/platforms/**\""
+  },
+  "typings": "index.d.ts",
+  "version": "6.2.1"
+}
