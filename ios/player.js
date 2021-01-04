@@ -4,6 +4,7 @@ import {
   path as nsFilePath,
   Utils,
 } from "@nativescript/core";
+const timer = require("@nativescript/core/timer");
 ("use strict");
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.TNSPlayerDelegate = void 0;
@@ -126,7 +127,7 @@ export class TNSPlayer extends Observable {
           reject(errorRef.value);
           return;
         } else if (this._player) {
-          this._player.delegate = TNSPlayerDelegate.initWithOwner(this);
+          // this._player.delegate = TNSPlayerDelegate.initWithOwner(this);
           this._player.enableRate = true;
           if (options.metering) {
             this._player.meteringEnabled = true;
@@ -135,7 +136,7 @@ export class TNSPlayer extends Observable {
             this._player.numberOfLoops = -1;
           }
           if (options.autoPlay) {
-            this._player.play();
+            // this._player.play();
           }
           resolve();
         } else {
@@ -246,11 +247,26 @@ export class TNSPlayer extends Observable {
       }
     });
   }
+
+  clearTimer() {
+    if (this._interval) {
+      timer.clearInterval(this._interval);
+    }
+  }
+
   play() {
     return new Promise((resolve, reject) => {
       try {
         if (!this.isAudioPlaying()) {
           this._player.play();
+          this._interval = timer.setInterval(() => {
+            if (this._player && this._player.playing) {
+              console.log("playing");
+            } else {
+              this.completeCallback(this._player);
+              this.clearTimer();
+            }
+          }, 500);
           resolve(true);
         }
       } catch (ex) {
