@@ -172,6 +172,9 @@ export class TNSPlayer extends Observable {
               reject();
             }
             this.completeCallback = options.completeCallback;
+            if (!this.completeCallback) {
+              this.completeCallback = () => {};
+            }
             this.errorCallback = options.errorCallback;
             this.infoCallback = options.infoCallback;
             const audioSession = AVAudioSession.sharedInstance();
@@ -259,6 +262,9 @@ export class TNSPlayer extends Observable {
       try {
         if (!this.isAudioPlaying()) {
           this._player.play();
+          if (this._interval) {
+            this.clearTimer();
+          }
           this._interval = timer.setInterval(() => {
             if (this._player && this._player.playing) {
               console.log("playing");
@@ -304,6 +310,7 @@ export class TNSPlayer extends Observable {
       try {
         if (this._player && this.isAudioPlaying()) {
           this._player.stop();
+          this.clearTimer();
         }
         const audioSession = AVAudioSession.sharedInstance();
         audioSession.setActiveError(false);
