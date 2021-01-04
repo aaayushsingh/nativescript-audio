@@ -267,7 +267,7 @@ export class TNSPlayer extends Observable {
           }
           this._interval = timer.setInterval(() => {
             if (this._player && this._player.playing) {
-              console.log("playing");
+              // console.log("playing");
             } else {
               this.completeCallback(this._player);
               this.clearTimer();
